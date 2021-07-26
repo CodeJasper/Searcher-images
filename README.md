@@ -1,5 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ca2dbc90d8285c19f17d250ce91ff3646e9e2ed
 # SearcherImages
+
+![ScreenShot](https://raw.githubusercontent.com/codejasper/Searcher-images/develop/src/assets/Preview1.PNG)
+![ScreenShot](https://raw.githubusercontent.com/codejasper/Searcher-images/develop/src/assets/Preview2.PNG)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
 
