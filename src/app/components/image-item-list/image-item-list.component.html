@@ -3,7 +3,10 @@
     <img class="img-fluid image-item-list" src={{image.webformatURL}}>    
 
     <div class="info-image">
-        <p class="info-text-image user">{{image.user}}</p>
+        <div class="avatar">
+            <img class="img-fluid image-user" *ngIf="image.userImageURL !== ''" src={{image.userImageURL}}>    
+            <p class="info-text-image user">{{image.user}}</p>
+        </div>        
         <p class="info-text-image type">{{image.type}}</p>
         <p class="info-text-image tags">{{image.tags}}</p>
     </div>

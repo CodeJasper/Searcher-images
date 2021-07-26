@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Image } from 'src/app/models/Image';
 import { ImagesService } from 'src/app/services/images.service';
+import { per_page, max_hits } from 'src/app/global_constants/globalConstants';
 
 
 /**
@@ -22,13 +23,17 @@ export class ListImagesComponent implements OnInit {
   images:Image[] = []
 
   // Current page of the list of images
-  page:string = "1"
+  page:number = 1
 
   // Query to use in the request of images
   query:string = ""
 
   // Category to use in the request of images
   category:string = ""
+
+
+  // Max pages allowed in the list
+  maxPages:number = 1
 
   /**
    * Creates an instance of ListImagesComponent.
@@ -48,8 +53,9 @@ export class ListImagesComponent implements OnInit {
    * @memberof ListImagesComponent
    */
   getImages(){
-    this.imagesService.getImages(this.page, this.query, this.category).subscribe( response => {
-      this.images = response.hits.map( item => {
+    this.imagesService.getImages(this.page.toString(), this.query, this.category).subscribe( response => {
+      this.maxPages = max_hits / parseFloat(per_page)      
+      response.hits.forEach( item => {
         const image = new Image();
         image.id = item.id;
         image.largeImageURL = item.largeImageURL;
@@ -61,9 +67,22 @@ export class ListImagesComponent implements OnInit {
         image.userImageURL = item.userImageURL;
         image.user_id = item.user_id;
         image.webformatURL = item.webformatURL;
-        return image
-      })
+        this.images.push(image)
+      })      
+      this.page++;
     })
   }
 
+  /**
+   *
+   * Requests more images if the user scroll down the page
+   * @memberof ListImagesComponent
+   */
+  onScroll(){
+    if(this.page < this.maxPages){
+      this.getImages()
+    }
+  }
+
+  
 }
