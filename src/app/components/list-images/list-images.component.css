@@ -1,0 +1,19 @@
+.container-fluid {
+  margin-top: 60px;
+}
+
+.empty-list {
+  margin-top: 400px;
+  width: 100%;
+}
+
+.empty-list > h2 {
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 769px) {
+  .container-fluid {
+    margin-top: 180px;
+  }
+}

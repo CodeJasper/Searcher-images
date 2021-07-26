@@ -1,9 +1,16 @@
+<app-filters (searchImagesEvent)="searchImages($event)"></app-filters>
+
+<div *ngIf="images.length === 0" class="empty-list">
+    <h2>No se encontraron imagenes con esas caracteristicas</h2>   
+</div>
+
 <div class="container-fluid py-5 px-md-5 " *ngIf="images.length > 0" infiniteScroll [infiniteScrollDistance]="2" (scrolled)="onScroll()">    
-    <app-image-detail ></app-image-detail>
+    <app-image-detail></app-image-detail>
     <div class="row">
         <app-image-item-list
         class="col col-6 col-sm-4 col-md-3 col-lg-2 g-1 d-flex justify-content-center"            
             *ngFor="let image of images"
             [image]="image"></app-image-item-list>          
-    </div>
+    </div>      
 </div>
+

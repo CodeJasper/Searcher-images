@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Image } from 'src/app/models/Image';
 import { ImagesService } from 'src/app/services/images.service';
 import { per_page, max_hits } from 'src/app/global_constants/globalConstants';
+import { NgForm } from '@angular/forms';
+
 
 
 /**
@@ -52,7 +54,7 @@ export class ListImagesComponent implements OnInit {
    * It request the images to imagesService and change the value of the variable "images"
    * @memberof ListImagesComponent
    */
-  getImages(){
+  getImages(){        
     this.imagesService.getImages(this.page.toString(), this.query, this.category).subscribe( response => {
       this.maxPages = max_hits / parseFloat(per_page)      
       response.hits.forEach( item => {
@@ -77,6 +79,43 @@ export class ListImagesComponent implements OnInit {
 
   /**
    *
+   * It request the images to imagesService when the filters changes and change de page to 1
+   * @param {NgForm} form Filters information
+   * @memberof ListImagesComponent
+   */
+  searchImages(form:NgForm){ 
+    this.page = 1;       
+    if(form.form.value.category === "selected"){
+      this.category = "";   
+    }
+    else{
+      this.category =form.form.value.category
+    }
+    this.query = form.form.value.search;
+    this.imagesService.getImages(this.page.toString(), this.query, this.category).subscribe( response => {
+      this.maxPages = max_hits / parseFloat(per_page)      
+      this.images = response.hits.map( item => {
+        const image = new Image();
+        image.id = item.id;
+        image.largeImageURL = item.largeImageURL;
+        image.pageUrl = item.pageUrl;
+        image.previewURL = item.previewURL;
+        image.tags = item.tags;
+        image.type = item.type;
+        image.user = item.user;
+        image.userImageURL = item.userImageURL;
+        image.user_id = item.user_id;
+        image.webformatURL = item.webformatURL;
+        image.views = item.views;
+        image.likes = item.likes;      
+        return image;  
+      })      
+      this.page++;
+    })
+  }
+
+  /**
+   *
    * Requests more images if the user scroll down the page
    * @memberof ListImagesComponent
    */
@@ -86,5 +125,7 @@ export class ListImagesComponent implements OnInit {
     }
   }
 
+    
+  
 
 }

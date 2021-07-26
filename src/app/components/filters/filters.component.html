@@ -1,0 +1,20 @@
+<form (keydown)="enter($event, myform)" #myform = "ngForm" action="" (ngSubmit)="searchImages(myform)" class="d-flex justify-content-center py-3 px-md-5 flex-column flex-md-row  bg-dark fixed-top">
+    <div class="col-md-3 p-2">        
+        <select class="form-select" id="category" name="category" ngModel="selected">
+            <option value="selected" >Seleccione una categoria</option>
+            <option value="science">Ciencia</option>
+            <option value="education">Educación</option>
+            <option value="people">Personas</option>
+            <option value="feelings">Sentimiento</option>
+            <option value="computer">Computadores</option>
+            <option value="buildings">Edificios</option>
+          </select>
+    </div>
+    <div class="col-md-6 p-2">        
+        <input type="text" maxlength="100" class="form-control" id="search" placeholder="Buscar..." name="search" ngModel>
+    </div>
+
+    <div class="col-md-3 p-2">
+        <button type="submit" class="btn btn-primary col-12" accesskey="h">Aplicar filtros</button>
+    </div>
+</form>

@@ -9,20 +9,24 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ImageDetailComponent } from './components/image-detail/image-detail.component';
 import { StoreModule } from '@ngrx/store';
 import { imageReducer } from './store/image.reducers';
+import { FiltersComponent } from './components/filters/filters.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListImagesComponent,
     ImageItemListComponent,
-    ImageDetailComponent
+    ImageDetailComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     InfiniteScrollModule,
-    StoreModule.forRoot({ image: imageReducer})
+    StoreModule.forRoot({ image: imageReducer}),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
