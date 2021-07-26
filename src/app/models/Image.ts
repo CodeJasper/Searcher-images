@@ -14,4 +14,6 @@ export class Image{
     user_id:number=0;
     user:string="";
     userImageURL:string="";
+    views: number=0;
+    likes: number=0;
 }

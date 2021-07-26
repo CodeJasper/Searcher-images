@@ -67,6 +67,8 @@ export class ListImagesComponent implements OnInit {
         image.userImageURL = item.userImageURL;
         image.user_id = item.user_id;
         image.webformatURL = item.webformatURL;
+        image.views = item.views;
+        image.likes = item.likes;
         this.images.push(image)
       })      
       this.page++;
@@ -84,5 +86,5 @@ export class ListImagesComponent implements OnInit {
     }
   }
 
-  
+
 }

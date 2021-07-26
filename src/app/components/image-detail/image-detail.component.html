@@ -1,0 +1,26 @@
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   
+    <div class="modal-dialog modal-lg">
+      
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src={{imageToShow.userImageURL}} >
+          <h2>{{imageToShow.user}} </h2>
+         
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img src={{imageToShow.largeImageURL}} >            
+           
+        </div>
+        <div class="modal-footer">
+            <p><span>Tipo de imagen:</span> {{imageToShow.type}}</p>
+            <p><span>Tags:</span> {{imageToShow.tags}}</p>
+            <p><span>Visualizaciones:</span> {{imageToShow.views | number}} </p>
+            <p><span>Me gusta:</span> {{imageToShow.likes | number}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
